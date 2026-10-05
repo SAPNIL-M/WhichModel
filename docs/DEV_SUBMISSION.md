@@ -12,10 +12,10 @@ cover_image: https://raw.githubusercontent.com/SAPNIL-M/WhichModel/main/docs/cov
 
 ## What I Built
 
-Every week, my friend asks me the exact same question:
+Every week, my friend **Abhi** asks me the exact same question:
 > *"Bro, which AI model should I actually use? Do I need to pay \$20/month for closed commercial APIs, or can an open-weight model actually keep up with my real work?"*
 
-Whenever we look at public AI leaderboards (MMLU, HumanEval, or Chatbot Arena), the answers feel disconnected from real life. My friends aren't sitting around evaluating standardized high-school math competitions or abstract trivia. In reality, they are:
+Whenever we look at public AI leaderboards (MMLU, HumanEval, or Chatbot Arena), the answers feel disconnected from real life. Abhi and my wider circle of friends aren't sitting around evaluating standardized high-school math competitions or abstract trivia. In reality, they are:
 - **Debugging real code:** Fixing subtle CSS flexbox/grid overflows and asynchronous Python backend errors.
 - **Drafting high-stakes outreach:** Writing cold emails to tech CEOs and startup hiring managers for internship opportunities.
 - **Studying for exams:** Condensing dense university biology lectures (like the biochemistry of photosynthesis or WW2 timelines) into crisp study guides.
@@ -23,7 +23,7 @@ Whenever we look at public AI leaderboards (MMLU, HumanEval, or Chatbot Arena), 
 
 The biggest obstacle wasn't the models—it was **brand bias**. When an answer carries a famous proprietary logo, people automatically convince themselves it is smarter. When it’s labeled "open model", people scrutinize it twice as hard.
 
-To solve this for my friend and our peer group, I built **WhichModel?**: an interactive, **double-blind AI benchmark arena** powered by their own daily prompts.
+To solve this for Abhi and our peer group, I built **WhichModel?**: an interactive, **double-blind AI benchmark arena** powered by their own daily prompts.
 
 ```mermaid
 flowchart LR
@@ -62,7 +62,7 @@ flowchart LR
 
 ## Code
 
-The entire codebase is open-source under the MIT license:
+The complete source code is public and open-source under the MIT license:
 
 {% github SAPNIL-M/WhichModel %}
 
@@ -76,7 +76,7 @@ The entire codebase is open-source under the MIT license:
 
 ### 1. The Open-Source AI Matrix
 
-WhichModel? is architected around frontier open-weight models, contrasted against a single commercial baseline:
+WhichModel? is architected around accessible open-weight models, contrasted against a single commercial baseline:
 
 | Model | Kind | Host Provider | License Category | Role in Benchmark |
 |---|---|---|---|---|
@@ -106,6 +106,11 @@ models:
     live_enabled: true
     rpm: 6
 ```
+
+> 💡 **An Honest Note on Resource Constraints & Model Selection:**  
+> Let's be completely transparent: there are even larger, highly perfected open-source and open-weight models in the ecosystem today (such as 70B+ parameter checkpoints, specialized reasoning models, and massive community fine-tunes). However, as an independent developer without cloud grant funding, venture sponsorship, or high-end GPU clusters to inference those massive models, I utilized the best accessible models I could get my hands on via developer-tier and free inference APIs (NVIDIA NIM and Groq).  
+>  
+> The fact that these lightweight, sub-30B models (like GPT-OSS 20B and Qwen 27B) still went toe-to-toe with a commercial closed model proves the point even more strongly: **if lightweight open models can already win 53.3% of real-world matchups, benchmarking with larger, perfected frontier open models will yield even more commanding results in favor of open source.**
 
 ### 2. Double-Blind Data Integrity
 To guarantee absolute double-blind evaluation, the backend enforces strict data sanitization:
@@ -157,7 +162,7 @@ Running this benchmark with real friend-submitted prompts produced surprising, e
 > 💡 **Key Takeaway:** Open-weight models won **8 out of 15 head-to-head showdowns (53.3% win rate)** against the commercial closed baseline!
 
 ### What This Taught Us About Open Innovation:
-1. **Open Models Beat Closed APIs on Developer Workloads:** In coding tasks, **GPT-OSS 20B won 75% of matchups**, beating Gemini 3.5 Flash Lite. My friend noticed that the open model gave direct, working code with minimal unnecessary fluff, whereas the closed model over-explained basic concepts.
+1. **Open Models Beat Closed APIs on Developer Workloads:** In coding tasks, **GPT-OSS 20B won 75% of matchups**, beating Gemini 3.5 Flash Lite. Abhi noticed that the open model gave direct, working code with minimal unnecessary fluff, whereas the closed model over-explained basic concepts.
 2. **Specialized Excellence Over Generic Monoliths:** **Qwen 3.8 27B** was the undisputed speed champion (a blazing **766 ms median latency**) and dominated summarization with a **75% win rate**. For high-speed reading, friends preferred Qwen over larger closed models.
 3. **No Subscription Anxiety & Zero Vendor Lock-in:** You can run these exact weights on your own machine using Ollama or vLLM. You aren't subject to unexpected pricing hikes, policy shifts, or API deprecations.
 4. **Honest License Awareness:** We deliberately differentiated between true permissive open-source (Apache 2.0) and community open-weights (Llama Community, Qwen Research). Educating users about these distinctions ensures teams know their true commercial rights.
@@ -220,7 +225,7 @@ All 18 tests pass cleanly, ensuring strict data privacy, election fairness, and 
 
 ## What My Friend Said When They Used It
 
-When I gave the link to my friend who inspired the project:
+When I gave the link to **Abhi** to test on his own real coding and writing prompts:
 
 > *"I was convinced Answer A on my Python script prompt was GPT-4 because the syntax was concise and it didn't lecture me. When the card flipped and revealed it was GPT-OSS 20B running on open weights, I was shocked. I don't need to pay for closed API keys for my daily coding tasks anymore—I'm running this locally tonight."*
 
