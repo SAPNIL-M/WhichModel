@@ -1,5 +1,6 @@
 .env
 *.db
+PROJECT_SPEC.md
 __pycache__/
 .pytest_cache/
 .venv/
